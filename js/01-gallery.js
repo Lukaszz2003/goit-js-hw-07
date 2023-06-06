@@ -38,4 +38,10 @@ gallery.addEventListener("click", (e) => {
 `);
 
   instance.show();
+
+  gallery.addEventListener("keydown", (e) => {
+    if (e.key !== "escape") {
+      instance.close();
+    }
+  });
 });
