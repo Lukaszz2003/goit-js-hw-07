@@ -1,7 +1,7 @@
 import { galleryItems } from "./gallery-items.js";
 // Change code below this line
 const gallery = document.querySelector(".gallery");
-
+const items = [];
 galleryItems.forEach((element) => {
   const galleryLink = document.createElement("a");
   galleryLink.className = "gallery__link";
@@ -9,7 +9,7 @@ galleryItems.forEach((element) => {
   const galleryImage = document.createElement("img");
   galleryImage.className = "gallery__image";
   galleryImage.src = element.preview;
-  galleryImage.setAttribute("title", element.original);
+  galleryImage.setAttribute("title", element.description);
   galleryImage.alt = element.description;
 
   galleryLink.append(galleryImage);
