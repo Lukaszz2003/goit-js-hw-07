@@ -31,27 +31,21 @@ gallery.addEventListener("click", (e) => {
 
   const selectedImage = e.target.getAttribute("data-source");
 
-  const instance = basicLightbox.create(
-    `
-    <img src="${selectedImage}" width="800" height="600">
-`,
-    {
-      onShow: (instance) => {
-        window.addEventListener("keydown", onEscKeyPress);
-      },
-      onClose: (instance) => {
-        window.removeEventListener("keydown", onEscKeyPress);
-      },
-    }
-  );
-  function onImgClick(e) {
-    e.preventDefault();
-    const datasetSource = e.target.dataset.source;
-    if (!datasetSource) return;
-    instance.element().querySelector("img").src = datasetSource;
-    instance.show();
-  }
-  function onEscKeyPress(e) {
-    if (e.code === "Escape") instance.close();
+  const instance = basicLightbox.create(`
+  <img src="${selectedImage}" width="800" height="600">
+`);
+
+  instance.show();
+  onShow: (instance) => {
+    window.addEventListener("keydown", onEscKeyPress);
+  };
+  onClose: (instance) => {
+    window.removeEventListener("keydown", onEscKeyPress);
+  };
+});
+
+gallery.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    instance.close();
   }
 });
