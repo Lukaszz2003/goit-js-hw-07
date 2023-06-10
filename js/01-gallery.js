@@ -42,9 +42,8 @@ gallery.addEventListener("click", (e) => {
   onClose: (instance) => {
     window.removeEventListener("keydown", onEscKeyPress);
   };
-  gallery.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-      instance.close();
-    }
-  });
+  function onEscKeyPress(e) {
+    if (e.code === "Escape") return;
+    instance.close();
+  }
 });
